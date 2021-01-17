@@ -1,0 +1,7 @@
+#loginbox {
+  margin-top: 30px;
+}
+
+#loginbox > div:first-child {
+  padding-bottom: 10px;
+}

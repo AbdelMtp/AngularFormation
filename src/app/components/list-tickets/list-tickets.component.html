@@ -1,0 +1,25 @@
+<app-header [isUserLoggedIn]="true"></app-header>
+<div class="row" style="margin-top: 70px;margin-left: 5px;margin-right: 5px">
+  <div class="col col-sm-12 col-md-3" *ngFor="let ticket of tickets">
+    <div class="panel">
+      <div class="panel-body">
+        <div class="row">
+          <div class="panel panel-default my_panel">
+            <div class="panel-body">
+              <img src="assets/images/tkt.jpg" alt="" class="img-responsive center-block"/>
+            </div>
+            <div class="panel-footer">
+              <h3>{{ticket.titre | ticketName}}</h3>
+              <h6>{{ticket.numero}}</h6>
+              <p>{{ticket.description}}</p>
+              <div class="row">
+                <a routerLink="/ticket">Détails</a>
+                <a href="#">Editer</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

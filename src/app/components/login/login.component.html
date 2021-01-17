@@ -1,0 +1,46 @@
+<app-header [isUserLoggedIn]="false"></app-header>
+<div class="container">
+  <div id="loginbox" class="mainbox col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3">
+    <div class="row">
+      <div class="text-center">
+        <img src="../../../assets/images/img.jpg"/>
+      </div>
+    </div>
+    <div class="panel panel-primary">
+      <div class="panel-heading"><strong>Login</strong></div>
+      <div class="panel-body">
+        <form [formGroup]="userFormGroup" (ngSubmit)="onSubmit()">
+          <div class="form-group has-feedback">
+            <input type="text" class="form-control" placeholder="Username" formControlName="userName" required/>
+            <span class="glyphicon glyphicon-user form-control-feedback"></span>
+            <div *ngIf="userName.invalid && (userName.dirty || userName.touched)" class="alert alert-danger">
+              <div *ngIf="userName.errors.required">
+                L'identifiant est obligatoire.
+              </div>
+              <div *ngIf="userName.errors.minlength">
+                L'identifiant doit comporter au moins 5 caractères.
+              </div>
+              <div *ngIf="userName.errors.maxlength">
+                L'identifiant doit comporter au maximum 20 caractères.
+              </div>
+            </div>
+          </div>
+          <div class="form-group has-feedback">
+            <input type="password" class="form-control" placeholder="Password" formControlName="password" required/>
+            <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+            <div *ngIf="password.invalid && (password.dirty || password.touched)" class="alert alert-danger">
+              Le password est obligatoire.
+            </div>
+          </div>
+          <div class="row">
+            <div class="form-group col-xs-offset-8 col-xs-4">
+              <button type="submit" class="btn btn-primary btn-block btn-flat" [disabled]="userFormGroup.invalid">
+                Valider
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
