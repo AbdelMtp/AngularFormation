@@ -8,7 +8,7 @@ import {HomeComponent} from './components/home/home.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent},
-  { path: 'ticket', component: TicketComponent},
+  { path: 'ticket/:numero', component: TicketComponent},
   { path: 'listTickets', component: ListTicketsComponent},
   { path: '', component: LoginComponent},
 ];

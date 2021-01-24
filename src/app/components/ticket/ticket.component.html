@@ -1,2 +1,77 @@
-<app-header [isUserLoggedIn]="true" ></app-header>
-<h4 style="margin-top: 90px;margin-left: 10px;">Ticket works !</h4>
+<app-header [isUserLoggedIn]="true"></app-header>
+<div class="container">
+  <div id="ticket" class="mainbox col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3" style="margin-top: 70px;">
+    <div class="panel panel-primary">
+      <div class="panel-heading" *ngIf="!isModif"><strong>Ajouter <span class="glyphicon glyphicon-folder-open"></span></strong>
+      </div>
+      <div class="panel-heading" *ngIf="isModif"><strong>Modifier <span
+        class="glyphicon glyphicon-pencil"></span></strong></div>
+      <div class="panel-body">
+        <form [formGroup]="ticketFormGroup" (ngSubmit)="onSubmit()">
+          <div class="form-group has-feedback">
+            <label *ngIf="isModif">Numéro</label>
+            <input type="text" class="form-control" placeholder="Numéro" formControlName="numero" [attr.disabled] = "isModif ? 'disabled' : null"
+                   required/>
+            <div *ngIf="numero.invalid && (numero.dirty || numero.touched)" class="alert alert-danger">
+              <div *ngIf="numero.errors.required">
+                Le numéro est obligatoire.
+              </div>
+              <div *ngIf="numero.errors.maxlength">
+                Le numéro doit comporter au maximum 20 caractères.
+              </div>
+            </div>
+          </div>
+          <div class="form-group has-feedback">
+            <label *ngIf="isModif">Date création</label>
+            <input type="datetime-local" class="form-control" placeholder="Date création" formControlName="dateCreation"
+                   required/>
+            <span class="glyphicon glyphicon-time form-control-feedback"></span>
+            <div *ngIf="dateCreation.invalid && (dateCreation.dirty || dateCreation.touched)"
+                 class="alert alert-danger">
+              <div *ngIf="dateCreation.errors.required">
+                La date création est obligatoire.
+              </div>
+            </div>
+          </div>
+          <div class="form-group has-feedback">
+            <label *ngIf="isModif">Titre</label>
+            <input type="text" class="form-control" placeholder="Titre" formControlName="titre" required/>
+            <div *ngIf="titre.invalid && (titre.dirty || titre.touched)" class="alert alert-danger">
+              <div *ngIf="titre.errors.required">
+                Le titre est obligatoire.
+              </div>
+              <div *ngIf="titre.errors.maxlength">
+                Le titre doit comporter au maximum 12 caractères.
+              </div>
+            </div>
+          </div>
+          <div class="form-group has-feedback">
+            <label *ngIf="isModif">Description</label>
+            <input type="text" class="form-control" placeholder="Description" formControlName="description" required/>
+            <div *ngIf="description.invalid && (description.dirty || description.touched)" class="alert alert-danger">
+              <div *ngIf="description.errors.required">
+                La description est obligatoire.
+              </div>
+              <div *ngIf="description.errors.maxlength">
+                La description doit comporter au maximum 30 caractères.
+              </div>
+            </div>
+          </div>
+          <div class="btn-toolbar" role="toolbar" style="display: block; text-align: right;">
+            <div class="btn-group" role="group" style="float: none;">
+              <button type="submit" class="btn btn-primary" routerLink="/listTickets">
+                Annuler <span class="glyphicon glyphicon-remove"></span>
+              </button>
+            </div>
+            <div class="btn-group" role="group" style="float: none;">
+              <button type="submit" class="btn btn-primary" [disabled]="ticketFormGroup.invalid">
+                Valider <span class="glyphicon glyphicon-ok"></span>
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+

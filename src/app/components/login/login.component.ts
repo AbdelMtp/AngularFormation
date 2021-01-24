@@ -26,10 +26,11 @@ export class LoginComponent {
       password: userForm.password
     };
     //Méthode provisoire!!
-    this.loginService.checkConnexion1(user).subscribe(data => {
+    /*this.loginService.checkConnexion1(user).subscribe(data => {
       console.log('data : ' + data);
       this.router.navigate(['/home']);
-    });
+    });*/
+    this.router.navigate(['/home']);
   }
 
   get userName() {

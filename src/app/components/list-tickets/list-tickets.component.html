@@ -10,11 +10,12 @@
             </div>
             <div class="panel-footer">
               <h3>{{ticket.titre | ticketName}}</h3>
+              <h6>{{ticket.dateCreation | date:'MMM d, y, HH:mm'}}</h6>
               <h6>{{ticket.numero}}</h6>
               <p>{{ticket.description}}</p>
               <div class="row">
-                <a routerLink="/ticket">Détails</a>
-                <a href="#">Editer</a>
+                <a [routerLink]="['/ticket', ticket.numero]">Modifier</a>
+                <a (click)="delete(ticket.numero)" style="cursor: pointer">Supprimer</a>
               </div>
             </div>
           </div>

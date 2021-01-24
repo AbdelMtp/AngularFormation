@@ -27,4 +27,9 @@ export class ListTicketsComponent implements OnInit {
       }
     );
   }
+  delete(numero)
+  {
+    this.ticketService.deleteTiket(this.ticketService.getTicket(numero));
+    //this.getTickets();
+  }
 }
